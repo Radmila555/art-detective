@@ -1,0 +1,13 @@
+Звуковые эффекты:
+- click.wav, correct.wav, wrong.wav, next.wav
+  Источник: Kenney Interface Sounds
+  Лицензия: Creative Commons Zero (CC0)
+  https://kenney.nl/assets/interface-sounds
+
+Фоновый звук:
+- intro_ambient.wav
+  Оригинальный файл: IntoTheStars.wav
+  Автор: KiluaBoy
+  Источник: OpenGameArt, "Sci Fi / Adventure / Eastern /Quiet Piano / Loop"
+  Лицензия: Creative Commons Zero (CC0)
+  https://opengameart.org/content/sci-fi-adventure-eastern-quiet-piano-loop
