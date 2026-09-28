@@ -40,7 +40,8 @@ The production build is written to `dist/`. The configured Vite base path is `/a
 
 ## Live demo
 
-Live Demo: _to be added after GitHub Pages is enabled_.
+- [Live Demo](https://Radmila555.github.io/art-detective/)
+- [GitHub repository](https://github.com/Radmila555/art-detective)
 
 ## Browser support
 
