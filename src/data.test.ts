@@ -14,8 +14,12 @@ describe('данные картин', () => {
       expect(painting.correctX).toBeLessThanOrEqual(1);
       expect(painting.correctY).toBeGreaterThanOrEqual(0);
       expect(painting.correctY).toBeLessThanOrEqual(1);
-      expect(paintingImage(painting.level, 'fake')).toBe(`/assets/img.${painting.level}_fake.png`);
-      expect(paintingImage(painting.level, 'orig')).toBe(`/assets/img.${painting.level}_orig.png`);
+      expect(paintingImage(painting.level, 'fake')).toBe(
+        `${import.meta.env.BASE_URL}assets/img.${painting.level}_fake.png`,
+      );
+      expect(paintingImage(painting.level, 'orig')).toBe(
+        `${import.meta.env.BASE_URL}assets/img.${painting.level}_orig.png`,
+      );
     });
   });
 

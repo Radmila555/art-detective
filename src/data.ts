@@ -1,3 +1,5 @@
+import { assetUrl } from './assets';
+
 export interface PaintingData {
   readonly level: number;
   readonly artist: string;
@@ -99,5 +101,5 @@ export function getPainting(level: number): PaintingData {
 }
 
 export function paintingImage(level: number, kind: 'fake' | 'orig'): string {
-  return `/assets/img.${level}_${kind}.png`;
+  return assetUrl(`assets/img.${level}_${kind}.png`);
 }

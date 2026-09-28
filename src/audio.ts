@@ -1,14 +1,16 @@
+import { assetUrl } from './assets';
+
 export type EffectName = 'click' | 'correct' | 'wrong' | 'next';
 
 const STORAGE_KEY = 'art-detective.sound-enabled';
 
 export class AudioController {
-  private readonly ambient = new Audio('/assets/sounds/intro_ambient.wav');
+  private readonly ambient = new Audio(assetUrl('assets/sounds/intro_ambient.wav'));
   private readonly effects: Record<EffectName, HTMLAudioElement> = {
-    click: new Audio('/assets/sounds/click.wav'),
-    correct: new Audio('/assets/sounds/correct.wav'),
-    wrong: new Audio('/assets/sounds/wrong.wav'),
-    next: new Audio('/assets/sounds/next.wav'),
+    click: new Audio(assetUrl('assets/sounds/click.wav')),
+    correct: new Audio(assetUrl('assets/sounds/correct.wav')),
+    wrong: new Audio(assetUrl('assets/sounds/wrong.wav')),
+    next: new Audio(assetUrl('assets/sounds/next.wav')),
   };
 
   private ambientWasStarted = false;
