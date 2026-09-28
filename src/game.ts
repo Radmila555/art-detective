@@ -1,6 +1,6 @@
 import { PAINTINGS } from './data';
 
-export type ScreenName = 'title' | 'plot' | 'gameplay' | 'results';
+export type ScreenName = 'title' | 'plot' | 'gameplay' | 'results' | 'credits';
 export type GuessResult = 'correct' | 'wrong' | 'ignored';
 
 export function gradeForScore(score: number): '3' | '4' | '5' {
@@ -17,9 +17,21 @@ export class GameSession {
   levelAnsweredCorrectly = false;
   answerRevealed = false;
   educationVisible = false;
+  private creditsReturnScreen: 'title' | 'results' = 'title';
 
   openPlot(): void {
     this.screen = 'plot';
+  }
+
+  openCredits(): void {
+    if (this.screen !== 'title' && this.screen !== 'results') return;
+    this.creditsReturnScreen = this.screen;
+    this.screen = 'credits';
+  }
+
+  closeCredits(): void {
+    if (this.screen !== 'credits') return;
+    this.screen = this.creditsReturnScreen;
   }
 
   beginInvestigation(): void {

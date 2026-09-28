@@ -31,6 +31,22 @@ describe('состояние игры', () => {
     expect(game.totalScore).toBe(0);
   });
 
+  it('открывает credits со стартового и финального экранов и возвращается назад', () => {
+    const game = new GameSession();
+    game.openCredits();
+    expect(game.screen).toBe('credits');
+    game.closeCredits();
+    expect(game.screen).toBe('title');
+
+    enterGame(game);
+    for (let level = 1; level <= 10; level += 1) finishCurrentLevel(game);
+    expect(game.screen).toBe('results');
+    game.openCredits();
+    expect(game.screen).toBe('credits');
+    game.closeCredits();
+    expect(game.screen).toBe('results');
+  });
+
   it('начисляет 10 баллов только за правильный ответ с первой попытки', () => {
     const game = new GameSession();
     enterGame(game);
