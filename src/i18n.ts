@@ -49,6 +49,7 @@ interface UiCopy {
   readonly fact: string;
   readonly artifact: string;
   readonly next: string;
+  readonly gameplayHint: string;
   readonly gameplayLabel: (level: number) => string;
   readonly originalAlt: (title: string) => string;
   readonly modifiedAlt: (level: number) => string;
@@ -71,7 +72,7 @@ export const UI_COPY = {
     authorCredit: 'Авторская разработка и программный код Гимадеевой Радмилы Искандеровны, ДШИ г. Колпашево, 2026 г.',
     start: 'Начать расследование',
     plotHeading: 'Сюжет',
-    story: 'Злобный Художник-Тролль пробрался в музей и испортил великие шедевры! Он добавил на картины современные предметы. Ты — эксперт-искусствовед. Найди все подделки, чтобы спасти выставку!',
+    story: 'Злобный Художник-Тролль пробрался в музей и испортил великие шедевры! Он добавил на картины современные предметы. Ты — эксперт-искусствовед. Найди все подделки, чтобы спасти выставку! Найдите современный предмет, добавленный в картину, и нажмите на него мышкой. На смартфоне или планшете — коснитесь предмета пальцем.',
     enterGallery: 'В галерею!',
     artworkInfo: 'Информация о картине',
     author: 'Автор',
@@ -79,6 +80,7 @@ export const UI_COPY = {
     fact: 'Факт',
     artifact: 'Найденный объект',
     next: 'Дальше',
+    gameplayHint: 'Найдите лишний предмет и нажмите на него.',
     gameplayLabel: (level) => `Игровой экран, уровень ${level}`,
     originalAlt: (title) => `Оригинал картины «${title}»`,
     modifiedAlt: (level) => `Изменённая картина, уровень ${level}`,
@@ -113,7 +115,7 @@ export const UI_COPY = {
     authorCredit: 'Original concept and code by Radmila Iskanderovna Gimadeeva, Kolpashevo School of Arts, 2026.',
     start: 'Start the investigation',
     plotHeading: 'The case',
-    story: 'A mischievous Artist-Troll has broken into the museum and tampered with famous masterpieces! He has added modern objects to the paintings. You are the art expert. Find every fake detail and save the exhibition!',
+    story: 'A mischievous Artist-Troll has broken into the museum and tampered with famous masterpieces! He has added modern objects to the paintings. You are the art expert. Find every fake detail and save the exhibition! Find the modern object added to the painting and click it. On a phone or tablet, tap the object with your finger.',
     enterGallery: 'Enter the gallery!',
     artworkInfo: 'About the painting',
     author: 'Artist',
@@ -121,6 +123,7 @@ export const UI_COPY = {
     fact: 'Art fact',
     artifact: 'Object found',
     next: 'Next',
+    gameplayHint: 'Find the odd object and click it.',
     gameplayLabel: (level) => `Game screen, level ${level}`,
     originalAlt: (title) => `Original painting: ${title}`,
     modifiedAlt: (level) => `Modified painting, level ${level}`,
@@ -198,6 +201,10 @@ export function getPaintingCopy(level: number, locale: Locale): PaintingCopy {
   const painting = PAINTING_COPY[level - 1];
   if (!painting || painting.level !== level) throw new RangeError(`Missing localized painting data for level ${level}`);
   return painting[locale];
+}
+
+export function getGameplayHint(level: number, locale: Locale): string | null {
+  return level === 1 ? UI_COPY[locale].gameplayHint : null;
 }
 
 function browserStorage(): StorageLike | null {

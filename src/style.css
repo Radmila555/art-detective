@@ -186,6 +186,31 @@ button {
   background: #2f2f2f;
 }
 
+.gameplay-hint {
+  position: absolute;
+  z-index: 10;
+  top: max(12px, env(safe-area-inset-top));
+  left: 50%;
+  width: min(680px, calc(100% - 390px));
+  margin: 0;
+  padding: 0.62rem 1rem;
+  transform: translateX(-50%);
+  border: 1px solid rgb(255 215 0 / 72%);
+  border-radius: 999px;
+  color: #fff;
+  background: rgb(25 25 25 / 96%);
+  box-shadow: 0 4px 18px rgb(0 0 0 / 45%);
+  font-family: Georgia, serif;
+  font-size: clamp(0.95rem, 1.5vw, 1.12rem);
+  line-height: 1.25;
+  text-align: center;
+  text-wrap: balance;
+}
+
+.screen--gameplay-with-hint .painting-stage {
+  top: clamp(58px, 8vh, 76px);
+}
+
 .painting-stage {
   position: absolute;
   inset: 0;
@@ -680,6 +705,17 @@ button {
     font-size: 1.25rem;
   }
 
+  .gameplay-hint {
+    top: calc(max(8px, env(safe-area-inset-top)) + 48px);
+    width: calc(100% - 24px);
+    padding: 0.55rem 0.8rem;
+    font-size: clamp(0.9rem, 4vw, 1rem);
+  }
+
+  .screen--gameplay-with-hint .painting-stage {
+    top: calc(max(8px, env(safe-area-inset-top)) + 96px);
+  }
+
   .title-layout h1 {
     min-height: auto;
     font-size: clamp(2rem, 10vw, 3rem);
@@ -808,6 +844,20 @@ button {
 
   .story-text {
     font-size: clamp(1rem, 3vw, 1.3rem);
+  }
+
+  .gameplay-hint {
+    top: max(8px, env(safe-area-inset-top));
+    left: max(12px, env(safe-area-inset-left));
+    width: auto;
+    max-width: calc(100% - 190px);
+    padding: 0.45rem 0.75rem;
+    transform: none;
+    font-size: 0.88rem;
+  }
+
+  .screen--gameplay-with-hint .painting-stage {
+    top: 54px;
   }
 
   .education-panel {

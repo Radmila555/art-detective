@@ -4,7 +4,7 @@ import { ARTWORK_CREDITS } from './credits';
 import { getPainting, paintingImage } from './data';
 import { GameSession } from './game';
 import { isInsideHitRadius, pointerToImagePoint } from './geometry';
-import { getPaintingCopy, isLocale, LocaleState, UI_COPY } from './i18n';
+import { getGameplayHint, getPaintingCopy, isLocale, LocaleState, UI_COPY } from './i18n';
 import { scheduleEducationCard } from './reveal';
 
 const appNode = document.querySelector<HTMLElement>('#app');
@@ -79,6 +79,7 @@ function renderGameplay(): string {
   const copy = UI_COPY[localeState.current];
   const painting = getPainting(game.currentLevel);
   const paintingCopy = getPaintingCopy(painting.level, localeState.current);
+  const gameplayHint = getGameplayHint(painting.level, localeState.current);
   const imageKind = game.answerRevealed ? 'orig' : 'fake';
   const education = game.educationVisible
     ? `<div class="answer-details">
@@ -97,8 +98,9 @@ function renderGameplay(): string {
     : copy.modifiedAlt(painting.level);
 
   return `
-    <section class="screen screen--gameplay" aria-label="${copy.gameplayLabel(painting.level)}">
+    <section class="screen screen--gameplay${gameplayHint ? ' screen--gameplay-with-hint' : ''}" aria-label="${copy.gameplayLabel(painting.level)}">
       ${screenControls()}
+      ${gameplayHint ? `<p class="gameplay-hint">${gameplayHint}</p>` : ''}
       <div class="painting-stage">
         <img class="painting" src="${paintingImage(painting.level, imageKind)}" alt="${imageAlt}" draggable="false" />
         <div class="feedback" role="status" aria-live="assertive"></div>

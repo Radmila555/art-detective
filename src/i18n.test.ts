@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { GameSession } from './game';
 import {
   getPaintingCopy,
+  getGameplayHint,
   LOCALE_STORAGE_KEY,
   LocaleState,
   PAINTING_COPY,
@@ -40,6 +41,18 @@ describe('localization', () => {
     expect(UI_COPY.en.caseClosed).not.toBe('');
     expect(UI_COPY.ru.credits.pageTitle).toBe('Источники и лицензии');
     expect(UI_COPY.en.credits.pageTitle).toBe('Sources & Licenses');
+  });
+
+  it('includes exact click and tap instructions in the RU and EN rules', () => {
+    expect(UI_COPY.ru.story).toBe('Злобный Художник-Тролль пробрался в музей и испортил великие шедевры! Он добавил на картины современные предметы. Ты — эксперт-искусствовед. Найди все подделки, чтобы спасти выставку! Найдите современный предмет, добавленный в картину, и нажмите на него мышкой. На смартфоне или планшете — коснитесь предмета пальцем.');
+    expect(UI_COPY.en.story).toBe('A mischievous Artist-Troll has broken into the museum and tampered with famous masterpieces! He has added modern objects to the paintings. You are the art expert. Find every fake detail and save the exhibition! Find the modern object added to the painting and click it. On a phone or tablet, tap the object with your finger.');
+  });
+
+  it('shows the localized static hint on level one only', () => {
+    expect(getGameplayHint(1, 'ru')).toBe('Найдите лишний предмет и нажмите на него.');
+    expect(getGameplayHint(1, 'en')).toBe('Find the odd object and click it.');
+    expect(getGameplayHint(2, 'ru')).toBeNull();
+    expect(getGameplayHint(2, 'en')).toBeNull();
   });
 
   it('contains complete RU and EN text for all ten levels', () => {
